@@ -1,4 +1,4 @@
-AccountRobert
+AccountingRobot
 =============
 WHAT 's this project?
 An app that can record expense in day/month/year
