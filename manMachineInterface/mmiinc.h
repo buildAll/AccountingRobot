@@ -6,12 +6,20 @@
 //  Copyright (c) 2014 buildAll. All rights reserved.
 //
 
-#ifndef accounting_accHead_h
-#define accounting_accHead_h
-
-
+#ifndef mmiinc_h
+#define mmiinc_h
 
 #endif
+
+int mmiGetAction();
+
+void mmiHandleAction(int actionID);
+
+void mmiGetNewExpense();
+
+//bool mmiCheckDayChange();
+
+#if(0)
 //#include <limits.h>
 
 
@@ -46,7 +54,7 @@ enum actionList
 bool newDay;
 
 
-#if(0)
+
 /*Function*/
 
 /*Below feature needs add for this function:

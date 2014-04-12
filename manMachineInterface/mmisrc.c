@@ -11,7 +11,7 @@
 #include <time.h>
 #include <string.h>
 //#include <conio.h>
-#include "dataHandleinc.h"
+#include "accHead.h"
 
 
 #include <sys/types.h>
@@ -19,121 +19,194 @@
 #include <unistd.h>
 
 
-char* dataUserName()
+int mmiGetAction()
 {
-    char* szUserName;
-    szUserName = getenv("USER");
+    int  actionID = -1;
+    char ch;
+    bool inputSuccess = true;
     
-    //printf(szUserName);
-    return szUserName;
-}
-
-char* dataPathCrate(char *type)
-{
-    struct stat st = {0};
-    char * userName;
-    
-    char  directory[1024] = "/Users/";
-    
-    //char new_dir[]="/User/bill/Library/Application Support/AccountRobert";
-    
-    userName = dataUserName();
-    
-   // printf(userName);
-
-    strcat(directory, userName);
-    
-    strcat(directory, "/Library/Application Support/AccountingRobot");
-    
-    if (stat(directory, &st) == -1)
+    printf(" Please enter the number to choose your action:\n");
+    while (1)
     {
+        inputSuccess = true;
+        scanf("%d",&actionID);
+        switch (actionID)
+        {
+            case quit:
+            case newExpense:
+            case checkToday:
+            case checkMonth:
+            case checkYear:
+            case checkHistory:
+                
+                while ((ch = getchar())!='\n')
+                {
+                    if ((ch == '.')||(!(ch>='0'&&ch<='6')))
+                    {
+                        printf("Please only enter the number from 0 to 6 \n");
+                        printf(" Please enter the number to choose your action:\n");
+                        inputSuccess = false;
+                        while ((ch = getchar())!='\n');
+                        break;
+                    }
+                }
+                
+                if (!inputSuccess) {
+                    fflush(stdin);
+                    break;
+                }
+                
+                printf(" Please wait a moment, I am trying my best to do the action\n");
+                system("clear");
+                return actionID;
+                
+                
+                
+            default:
+
+                  printf(" Sorry, I can not provide this service, please re-enter your choice:\n ");
+
+                
+                while ((ch = getchar())!='\n')
+                {
+                    ;//do nothing
+                }
+                
+                continue;
+
+        }
         
-        if((mkdir(directory, 07777)) == 0)
-            printf("system error !\n");
-            exit(1);  
     }
-
-    strcat(directory, type);
-
-    return directory;
 }
 
-float dataGet(char* path)
+void mmiHandleAction(int actionID)
 {
-    FILE* data;
-
-    float consume = 0;
-
-    
-    if((data = fopen(path, "r+")) == NULL)
-    {
-        if((data = fopen(path, "w+")) == NULL)
-        {
-            printf("system fail, type 0\n");
-            exit(0);
-        }
-        else
-        {
-            fwrite(&consume, sizeof(float), 1, data);
-        }
+    switch (actionID) {
+        case quit:
+            printf("It is my pleasure to provide service to you, hope to see you soon! Bye!\n");
+            break;
+        case newExpense:
+            printf("I am going to record the new expense, pls wait...\n");
+            mmiGetNewExpense();
+            break;
+        case checkToday:
+            printf("Your expense of today as follow:\n");
+            break;
+        case checkMonth:
+            printf("Your expense of this month as follow:\n");
+            break;
+        case checkYear:
+            printf("Your expense of this year as follow:\n");
+            break;
+        case checkHistory:
+            printf("Total expense I can remember as follow:\n");
+            break;
+            
+        default:
+            printf("system error!");
+            //getAction();
+            break;
     }
-    
-    
-    rewind(data);
-    
-    fread(&consume, sizeof(float), 1, data);
-    
-    printf("read completed, the numebr is %.2f", consume);
-    
-    fclose(data);
-    
-    return consume;
-}
-
-
-void dataStore(char *path, float content)
-{
-    FILE* store;
-
-    float consume = content;
-
-    if((store = fopen(path, "r+")) == NULL)
-    {
-            printf("system fail, type 0\n");
-            exit(0);
-    }
-
-    rewind(store);
-
-    fwrite(&consume, sizeof(float), 1, store);
-
-    fclose(store);
-
+    //getchar();
     return;
 }
 
-float dataCompute(float newConsume, float totalConsume)
+
+void mmiGetNewExpense()
 {
-    float total;
+    struct Expense newExpense;
+    float totalConsumeToday;
+    
+    char  ch;
+    
+    bool reGet = false;
+    
+    int counter = 0;
+    
+    
+    do {
+        
+        reGet = false;
+        counter = 0;
+        
+        printf("Please enter the money you spent:\n");
+        scanf("%f",&newExpense.moneyExpense);
+        while ((ch = getchar())!='\n')
+        {
+            if ((ch >= '0' && ch <= '9')|| ch == '.')
+            {
+                if (ch == '.')
+                {
+                    counter++;
+                    if (counter >= 1)
+                    {
+                        reGet = true;
+                        printf("There shall be only one '.'\n");
+                        while ((ch = getchar())!='\n');
+                        break;     
+                    }
 
-    total = newConsume + totalConsume;
+                }
+                
+            }
+            else
+            {
+                reGet = true;
+                printf("Please enter number for your expense...\n");
+                while ((ch = getchar())!='\n');
+                    break;
+            }
+            
+        }
+    } while (reGet);
+    
+    totalConsumeToday = calTodayTotal(newExpense.moneyExpense);
+    printf("Expense recorded!\n");
 
-    return total;
+    
+    return;
 }
+
+/*
+bool mmiCheckDayChange()
+{
+    FILE* dateFile;
+    time_t now = time(NULL);
+    struct tm *today = localtime(&now);
+    
+    int todayDate = today->tm_mday;
+    int preDate;
+    
+    if ((dateFile = fopen("/Users/bill/Documents/Program/cProgramming/demoAPP/Accounting/accounting/accounting/Work/date", "r+"))==NULL) {
+        printf("system error!\n");
+        return false;
+    }
+    fread(&preDate, sizeof(int), 1, dateFile);
+    
+    if (todayDate == preDate)
+    {
+        rewind(dateFile);
+        fclose(dateFile);
+        return false;
+    }
+    else
+    {
+        rewind(dateFile);
+        fwrite(&todayDate, sizeof(int), 1, dateFile);
+        rewind(dateFile);
+        fclose(dateFile);
+        printf("Today is a new day!\n");
+        return true;
+    }
+    
+}
+
+*/
 
 
 
 
 #if(0)
-
-long length;
-long count;
-float todayTotal;
-
-
-char* msgForUser = NULL;
-char chOfFile;
-
 char* getTodayDate()
 {
     
@@ -463,7 +536,7 @@ void handleAction(int actionID)
             //getAction();
             break;
     }
-    getchar();
+    //getchar();
     return;
 }
 
@@ -619,5 +692,4 @@ int getTotalConsume(int expenseThisTime)
     
     return totalConsume;
 }
-
 #endif

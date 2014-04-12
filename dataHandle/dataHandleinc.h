@@ -24,8 +24,18 @@ float dataGet(char* path);
 
 float dataCompute(float newConsume, float totalConsume);
 
-float dataStroe(float consume, char * path); 
+void dataStore(char *path, float content);
+
 char* dataUserName(void);
+
+
+/*More function will be added.....
+ 
+ dataDelete
+ dataReset
+
+ 
+*/
 
 
 
