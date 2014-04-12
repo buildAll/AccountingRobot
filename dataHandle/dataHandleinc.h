@@ -11,14 +11,15 @@
 #endif
 //#include <limits.h>
 
-#define TODAY "/totalToday"
-#define MONTH "/totalMonth"
-#define YEAR  "/totalYear"
-#define HISTORY "/totalHistory"
+#define CONSUMETODAY "/totalToday"
+#define CONSUMEMONTH "/totalMonth"
+#define CONSUMEYEAR  "/totalYear"
+#define CONSUMEHISTORY "/totalHistory"
 
 //char* dataPathCrate(char * os);
 
 char* dataPathCrate(char *type);
+//void dataPathCrate(char* path,char* type);
 
 float dataGet(char* path);
 

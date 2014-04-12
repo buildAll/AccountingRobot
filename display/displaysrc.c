@@ -54,6 +54,11 @@ void displayBounderay(char *displayBounderayType)
 
 void displayMenu()
 {
+
+     printf("1. NEW expense\n");
+     printf("0. Quit\n");
+
+#if(0)
     FILE* menuList;
     long length;
     long count;
@@ -95,6 +100,7 @@ void displayMenu()
     }
     
     fclose(menuList);
+#endif    
 
     return;
 }

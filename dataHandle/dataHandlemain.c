@@ -4,7 +4,7 @@
 int main(int argc, char const *argv[])
 {
 	/* code */
-	char * dataPath;
+	char dataPath[1024];
 
 	float testDataCompute = 238.5;
 

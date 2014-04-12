@@ -8,15 +8,17 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include <time.h>
+//#include <time.h>
 #include <string.h>
 //#include <conio.h>
-#include "accHead.h"
+//#include "accHead.h"
 
 
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
+
+#include "mmiinc.h"
 
 
 int mmiGetAction()
@@ -160,7 +162,7 @@ void mmiGetNewExpense()
         }
     } while (reGet);
     
-    totalConsumeToday = calTodayTotal(newExpense.moneyExpense);
+    //totalConsumeToday = calTodayTotal(newExpense.moneyExpense);
     printf("Expense recorded!\n");
 
     

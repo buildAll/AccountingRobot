@@ -11,11 +11,42 @@
 
 #endif
 
+#include <stdbool.h>
+
+/*
+typedef enum boolen
+{
+    false = 0,
+    true = 1
+}bool;
+
+*/
+
+enum actionList
+{
+    quit,
+    newExpense,
+    checkToday,
+    checkMonth,
+    checkYear,
+    checkHistory
+};
+
 int mmiGetAction();
 
 void mmiHandleAction(int actionID);
 
 void mmiGetNewExpense();
+
+struct Expense
+{
+  /* data */
+  char* dateExpense;   //the date of the expense be made
+  float moneyExpense;    //how much for this expense
+  char* gainExpense;   //what be gained from the expense
+};
+
+struct Expense firstEx;
 
 //bool mmiCheckDayChange();
 

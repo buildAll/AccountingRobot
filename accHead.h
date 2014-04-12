@@ -15,6 +15,14 @@
 //#include <limits.h>
 
 
+
+/*gloabl data*/
+float totalToday;
+float totalMonth;
+float totalYear;
+float totaHistory;
+
+
 /*data*/
 struct Expense
 {

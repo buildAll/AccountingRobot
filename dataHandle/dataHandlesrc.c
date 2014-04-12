@@ -28,12 +28,14 @@ char* dataUserName()
     return szUserName;
 }
 
-char* dataPathCrate(char *type)
+char* dataPathCrate(char* type)
 {
     struct stat st = {0};
     char * userName;
     
     char  directory[1024] = "/Users/";
+
+    
     
     //char new_dir[]="/User/bill/Library/Application Support/AccountRobert";
     
@@ -54,6 +56,14 @@ char* dataPathCrate(char *type)
     }
 
     strcat(directory, type);
+/*
+    for (int i = 0; i < strlen(directory); ++i)
+    {
+        path[0] = directory[0];
+    }
+*/
+    printf(directory);
+    printf("\n");
 
     return directory;
 }
@@ -67,6 +77,7 @@ float dataGet(char* path)
     
     if((data = fopen(path, "r+")) == NULL)
     {
+        printf("No data file be found, trying to create a new one\n");
         if((data = fopen(path, "w+")) == NULL)
         {
             printf("system fail, type 0\n");
@@ -83,7 +94,7 @@ float dataGet(char* path)
     
     fread(&consume, sizeof(float), 1, data);
     
-    printf("read completed, the numebr is %.2f", consume);
+    printf("read completed, the numebr is %.2f\n", consume);
     
     fclose(data);
     
