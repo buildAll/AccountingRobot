@@ -31,12 +31,15 @@ int main(void)
     resetTodayTotal();
     
   */  
+    mainDateGet();
     
     mainDataPrepare();
 
     mainWelcome();
 
     mainMmi();
+
+    //mainDataHanlde();
     
     getchar(); 
  /*

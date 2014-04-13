@@ -13,6 +13,8 @@
 
 #include <stdbool.h>
 
+#define MAXMENUITEM 1
+
 /*
 typedef enum boolen
 {
@@ -21,6 +23,10 @@ typedef enum boolen
 }bool;
 
 */
+
+float mmiNewConsume;
+
+bool newDay;
 
 enum actionList
 {
@@ -32,11 +38,11 @@ enum actionList
     checkHistory
 };
 
-int mmiGetAction();
+int mmiGetAction(void);
 
 void mmiHandleAction(int actionID);
 
-void mmiGetNewExpense();
+float mmiGetNewExpense(void);
 
 struct Expense
 {
@@ -47,6 +53,8 @@ struct Expense
 };
 
 struct Expense firstEx;
+
+void mmiCheckNewDay(void);
 
 //bool mmiCheckDayChange();
 

@@ -21,6 +21,8 @@
 #include "mmiinc.h"
 
 
+
+
 int mmiGetAction()
 {
     int  actionID = -1;
@@ -36,16 +38,16 @@ int mmiGetAction()
         {
             case quit:
             case newExpense:
-            case checkToday:
-            case checkMonth:
-            case checkYear:
-            case checkHistory:
+          //  case checkToday:
+           // case checkMonth:
+           // case checkYear:
+           // case checkHistory:
                 
                 while ((ch = getchar())!='\n')
                 {
-                    if ((ch == '.')||(!(ch>='0'&&ch<='6')))
+                    if ((ch == '.')||(!(ch>='0'&&ch<='MAXMENUITEM')))
                     {
-                        printf("Please only enter the number from 0 to 6 \n");
+                        printf("Please only enter the number be listed\n");
                         printf(" Please enter the number to choose your action:\n");
                         inputSuccess = false;
                         while ((ch = getchar())!='\n');
@@ -83,13 +85,15 @@ int mmiGetAction()
 
 void mmiHandleAction(int actionID)
 {
+    mmiNewConsume = 0;
+
     switch (actionID) {
         case quit:
             printf("It is my pleasure to provide service to you, hope to see you soon! Bye!\n");
             break;
         case newExpense:
             printf("I am going to record the new expense, pls wait...\n");
-            mmiGetNewExpense();
+            mmiNewConsume = mmiGetNewExpense();
             break;
         case checkToday:
             printf("Your expense of today as follow:\n");
@@ -114,7 +118,7 @@ void mmiHandleAction(int actionID)
 }
 
 
-void mmiGetNewExpense()
+float mmiGetNewExpense()
 {
     struct Expense newExpense;
     float totalConsumeToday;
@@ -166,7 +170,7 @@ void mmiGetNewExpense()
     printf("Expense recorded!\n");
 
     
-    return;
+    return newExpense.moneyExpense;
 }
 
 /*

@@ -37,7 +37,7 @@ void displayWelcome()
 
 void displayExpense(char* period,float consume)
 {
-     printf("You have spent : %.2f ", &consume);
+     printf("You have spent : %.2f ", consume);
      printf(period);
      printf("\n");
      return;
@@ -57,7 +57,7 @@ void displayMenu()
 
      printf("1. NEW expense\n");
      printf("0. Quit\n");
-
+        
 #if(0)
     FILE* menuList;
     long length;
@@ -454,6 +454,7 @@ bool checkDayChange()
     struct tm *today = localtime(&now);
     
     int todayDate = today->tm_mday;
+                    
     int preDate;
     
     if ((dateFile = fopen("/Users/bill/Documents/Program/cProgramming/demoAPP/Accounting/accounting/accounting/Work/date", "r+"))==NULL) {

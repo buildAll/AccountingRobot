@@ -15,6 +15,10 @@
 #define CONSUMEMONTH "/totalMonth"
 #define CONSUMEYEAR  "/totalYear"
 #define CONSUMEHISTORY "/totalHistory"
+#define DATEDAY "/dateToday"
+#define DATEMONTH "/dateMonth"
+#define DATEYEAR "/dateYear"
+
 
 //char* dataPathCrate(char * os);
 
@@ -28,6 +32,8 @@ float dataCompute(float newConsume, float totalConsume);
 void dataStore(char *path, float content);
 
 char* dataUserName(void);
+
+
 
 
 /*More function will be added.....

@@ -102,6 +102,7 @@ float dataGet(char* path)
 }
 
 
+
 void dataStore(char *path, float content)
 {
     FILE* store;
