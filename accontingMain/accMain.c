@@ -11,7 +11,7 @@
 #include <time.h>
 
 
-#include "accHead.h"
+#include "accMaininc.h"
 
 
 
@@ -19,40 +19,38 @@
 int main(void)
 {
     
-    int actionID = -1;
-    
-    creatDir();
-    
-   // printf(directory);
-   // printf("\n");
+
     
     
     
+  /*  
     newDay = false;
     
     newDay = checkDayChange();
     
     resetTodayTotal();
     
-    
-    
-    
-    do
-    {
-    displayWelcome();
+  */  
+   
+    mainDataPrepare();
 
-    actionID = getAction();
+    mainDateGet();
+
+    mainDateChangeHandle();
     
-    handleAction(actionID);
-        
-        if (actionID !=0)
-        {
-            printf("Please any key to continue...\n");
-            getchar();
-            system("clear");
-        }
-        
-    }while (actionID !=0);
+    
+
+
+
+    mainWelcome();
+
+    mainMmi();
+
+  //  mainDateChangeHandle();
+
+    //mainDataHanlde();
+    
+    //getchar(); 
  /*
     if (checkDayChange()) {
         printf("Today is a new day!");

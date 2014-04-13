@@ -21,6 +21,8 @@
 #define TODAY "today"
 #define MONTH "this month"
 #define YEAR "this year"
+#define HISTORY "totally"
+
 
 
 

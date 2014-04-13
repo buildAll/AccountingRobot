@@ -6,12 +6,59 @@
 //  Copyright (c) 2014 buildAll. All rights reserved.
 //
 
-#ifndef accounting_accHead_h
-#define accounting_accHead_h
-
-
+#ifndef mmiinc_h
+#define mmiinc_h
 
 #endif
+
+#include <stdbool.h>
+
+#define MAXMENUITEM 1
+
+/*
+typedef enum boolen
+{
+    false = 0,
+    true = 1
+}bool;
+
+*/
+
+float mmiNewConsume;
+
+bool newDay;
+
+enum actionList
+{
+    quit,
+    newExpense,
+    checkToday,
+    checkMonth,
+    checkYear,
+    checkHistory
+};
+
+int mmiGetAction(void);
+
+void mmiHandleAction(int actionID);
+
+float mmiGetNewExpense(void);
+
+struct Expense
+{
+  /* data */
+  char* dateExpense;   //the date of the expense be made
+  float moneyExpense;    //how much for this expense
+  char* gainExpense;   //what be gained from the expense
+};
+
+struct Expense firstEx;
+
+void mmiCheckNewDay(void);
+
+//bool mmiCheckDayChange();
+
+#if(0)
 //#include <limits.h>
 
 
@@ -81,3 +128,4 @@ void creatDir(void);
 
 
 int getTotalConsume(int expenseThisTime);
+#endif
