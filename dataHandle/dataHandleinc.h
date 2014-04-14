@@ -20,6 +20,34 @@
 #define DATEYEAR "/dateYear"
 
 
+
+
+
+#ifdef _WIN64
+   const char* os = "Windoze64";
+#elif _WIN32
+   const char* os = "Windoze32";
+#elif __APPLE__
+    #include "TargetConditionals.h"
+    #if TARGET_IPHONE_SIMULATOR
+         // iOS Simulator
+    #elif TARGET_OS_IPHONE
+        // iOS device
+    #elif TARGET_OS_MAC
+        const char* os = "MACOS";
+    #else
+        // Unsupported platform
+    #endif
+#elif __linux
+    // linux
+#elif __unix // all unices not caught above
+    // Unix
+#elif __posix
+    // POSIX
+#endif
+
+
+
 //char* dataPathCrate(char * os);
 
 char* dataPathCrate(char *type);
