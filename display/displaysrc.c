@@ -5,12 +5,16 @@
 //  Created by bill on 4/11/14.
 //  Copyright (c) 2014 buildAll. All rights reserved.
 //
-
+//History:
+//2014-04-15: 1. Optimise displaymenu function to display user name. 
+//            2. Add new function to get os HOME path.
+//            3. Update dsipalyWelcome function to use marco to display.
 #include "displayinc.h"
 #include <time.h>
 #include <stdlib.h>
 #include <stdio.h>
 
+extern char* dataUserName(void);
 
 void displayWelcome()
 {
@@ -20,11 +24,13 @@ void displayWelcome()
   struct tm * timeinfo;
   char buffer [80];
 
+  
+
   time ( &rawtime );
   timeinfo = localtime ( &rawtime );
 
   strftime (buffer,80,"Now it's 20%y/%m/%d.",timeinfo);
-  printf("Hello, I am Robert.Account.\n");
+  printf(WELCOME"\n");
   puts (buffer);
   
   return;
@@ -41,15 +47,19 @@ void displayExpense(char* period,float consume)
 void displayBounderay(char *displayBounderayType)
 {
      printf(displayBounderayType);
-	 printf("\n");
+	   printf("\n");
      return;
 }
 
 //void displayMenu(char *ptrToMenuListFile)
 
 void displayMenu()
-{
-
+{    
+     char* userName = dataUserName();
+     printf("\n");
+     printf("What can I do for you,");
+     printf(userName);
+     printf("?\n");
      printf("1. NEW expense\n");
      printf("0. Quit\n");
         

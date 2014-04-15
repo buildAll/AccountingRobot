@@ -16,7 +16,7 @@
 
 #include <sys/types.h>
 #include <sys/stat.h>
-#include <unistd.h>
+//#include <unistd.h>
 
 #include "mmiinc.h"
 
@@ -29,7 +29,7 @@ int mmiGetAction()
     char ch;
     bool inputSuccess = true;
     
-    printf(" Please enter the number to choose your action:\n");
+    printf("Please enter the number to choose your action:\n");
     while (1)
     {
         inputSuccess = true;
@@ -48,7 +48,7 @@ int mmiGetAction()
                     if ((ch == '.')||(!(ch>='0'&&ch<='MAXMENUITEM')))
                     {
                         printf("Please only enter the number be listed\n");
-                        printf(" Please enter the number to choose your action:\n");
+                        printf("Please enter the number to choose your action:\n");
                         inputSuccess = false;
                         while ((ch = getchar())!='\n');
                         break;
@@ -60,7 +60,7 @@ int mmiGetAction()
                     break;
                 }
                 
-                printf(" Please wait a moment, I am trying my best to do the action\n");
+                //printf("Please wait a moment, I am trying my best to do the action\n");
                 system("clear");
                 return actionID;
                 
@@ -68,7 +68,7 @@ int mmiGetAction()
                 
             default:
 
-                  printf(" Sorry, I can not provide this service, please re-enter your choice:\n ");
+                  printf("Sorry, I can not provide this service, please re-enter your choice:\n ");
 
                 
                 while ((ch = getchar())!='\n')

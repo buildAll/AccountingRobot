@@ -1,3 +1,6 @@
+//History:
+//2014-04-15: Add menu display after the 
+
 
 #include "accMaininc.h"
 
@@ -133,10 +136,10 @@ void mainWelcome()
 {
 	displayBounderay(BOUNDERAYTPYE);
 	displayWelcome();
-	displayExpense(TODAY,totalToday);
+	//displayExpense(TODAY,totalToday);
 	displayExpense(MONTH,totalMonth);
-    displayExpense(YEAR,totalYear);
-    displayExpense(HISTORY,totalHistory);
+    //displayExpense(YEAR,totalYear);
+    //displayExpense(HISTORY,totalHistory);
 	displayBounderay(BOUNDERAYTPYE);
 	displayMenu();
 	return;
@@ -182,12 +185,15 @@ void mainMmi()
         
         if (action !=0)
         {
-            printf("Please any key to continue...\n");
+            //printf("Please any key to continue...\n");
           //  getchar();
            // system("clear");
+          displayMenu();
         }
         
     }while (action !=0);
+
+    
     
     return;
 }

@@ -18,6 +18,16 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
+char* dataGetHome()
+{
+    char* userHomePath;
+
+    userHomePath = getenv("HOME");
+
+    return userHomePath;
+}
+
+
 
 char* dataUserName()
 {
@@ -27,25 +37,25 @@ char* dataUserName()
     //printf(szUserName);
     return szUserName;
 }
-
+#if(0)
 char* dataPathCrate(char* type)
 {
     struct stat st = {0};
     char * userName;
     
-    char  directory[1024] = "/Users/";
+    char  directory[1024] = {'\0'};
 
     
     
     //char new_dir[]="/User/bill/Library/Application Support/AccountRobert";
     
-    userName = dataUserName();
+    userName = dataGetHome();
     
    // printf(userName);
 
-    strcat(directory, userName);
+    strcpy(directory, userName);
     
-    strcat(directory, "/Library/Application Support/AccountingRobot");
+    strcat(directory, APPDIRECTORY);
     
     if (stat(directory, &st) == -1)
     {
@@ -67,32 +77,32 @@ char* dataPathCrate(char* type)
 
     return directory;
 }
-
+#endif
 
 void dataPathCreate(char* path,char*type)
 {
     struct stat st = {0};
-    char * userName;
+    char * userHome;
     
     //char  directory[1024] = "/Users/";
 
-    char startString[] = "/Users/";// It can be defined as a MARCO to distinguish the OS from MAC OS and WINDOWS
+    //char startString[] = "/Users/";// It can be defined as a MARCO to distinguish the OS from MAC OS and WINDOWS
 /*
     for (int i = 0; i < sizeof(startString); ++i)
     {
         path[0]=startString[0];
     }
  */ 
-    strcpy(path, startString);   
+    //strcpy(path, startString);   
     //char new_dir[]="/User/bill/Library/Application Support/AccountRobert";
     
-    userName = dataUserName();
+    userHome = dataGetHome();
     
    // printf(userName);
 
-    strcat(path, userName);
+    strcpy(path, userHome);
     
-    strcat(path, "/Library/Application Support/AccountingRobot");
+    strcat(path, APPDIRECTORY);
     
     if (stat(path, &st) == -1)
     {
@@ -109,8 +119,8 @@ void dataPathCreate(char* path,char*type)
         path[0] = path[0];
     }
 */
-   // printf(path);
-   // printf("\n");
+  //    printf(path);
+  //  printf("\n");
 
     return;
 }
