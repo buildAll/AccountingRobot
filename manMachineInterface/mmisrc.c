@@ -12,6 +12,7 @@
 #include <string.h>
 //#include <conio.h>
 //#include "accHead.h"
+#include "bool.h"
 
 
 #include <sys/types.h>

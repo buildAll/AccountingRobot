@@ -13,7 +13,7 @@
 */
 //#include <stdbool.h>
 
-#include "bool.h"
+//#include "bool.h"
 
 
 
@@ -63,7 +63,7 @@ typedef enum boolen
 
 float mmiNewConsume;
 
-bool newDay;
+//bool newDay;
 
 enum actionList
 {
@@ -127,7 +127,7 @@ enum actionList
     checkHistory
 };
 
-bool newDay;
+//bool newDay;
 
 
 
