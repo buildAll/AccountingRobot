@@ -8,10 +8,9 @@ WIN7:
 2.Run it directly.
 
 MAC OS X:
-1.Download the .exe file in Product folder
-2.Run terminal in your MAC
-3.change directory to where the .exe be stored.
-4.input following command in your terminal: sudo ./AccountingRobot.exe
+1.Download the file in Produc_ForMAC folder
+2.Open the file with Terminal 
+
 
 
 WHAT 's this project?
