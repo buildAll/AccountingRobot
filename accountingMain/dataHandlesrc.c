@@ -22,8 +22,6 @@ char* dataGetHome()
 {
     char* userHomePath;
 
-	
-
     //userHomePath = getenv("HOME");
     userHomePath = getenv(FINDHOME);
     return userHomePath;
@@ -33,20 +31,14 @@ char* dataGetHome()
 
 char* dataUserName()
 {
-    char* szUserName = "my friend";
+    char* szUserName;
     //szUserName = getenv("USER");
    
-   /*szUserName = getenv("LOGNAME");
+   szUserName = getenv("LOGNAME");
 
     
     //printf(szUserName);
-   char acUserName[100];
- DWORD nUserName = sizeof(acUserName);
-    if (GetUserName(acUserName, &nUserName)) {
-        return szUserName;
-    }*/
     return szUserName;
-    
 }
 #if(0)
 char* dataPathCrate(char* type)

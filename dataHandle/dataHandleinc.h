@@ -7,19 +7,24 @@
 //
 // History:
 // 2014-04-15: Add the pre-define to check the OS for the App data path.
-
+/*
 #ifndef dataHandleinc_h
 #define dataHandleinc_h
 #endif
+*/
 //#include <limits.h>
 
 
 #ifdef _WIN64
   // const char* os = "Windoze64";
-   #define APPDIRECTORY "\\AppData\\Roaming\\AccountingRobot"
+   #define APPDIRECTORY "\\AccountingRobot"
+   #define FINDHOME "APPDATA"
+   # include <windows.h>
 #elif _WIN32
    //const char* os = "Windoze32";
-   #define APPDIRECTORY "\\AppData\\Roaming\\AccountingRobot"
+   #define APPDIRECTORY "\\AccountingRobot"
+    #define FINDHOME "APPDATA"
+    #include <windows.h>
 #elif __APPLE__
     #include "TargetConditionals.h"
     #if TARGET_IPHONE_SIMULATOR
@@ -28,6 +33,7 @@
         // iOS device
     #elif TARGET_OS_MAC
      //   const char* os = "MACOS";
+      #define FINDHOME "HOME"
       #define APPDIRECTORY  "/Library/Application Support/AccountingRobot"
     #else
         // Unsupported platform

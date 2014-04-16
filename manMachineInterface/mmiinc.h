@@ -5,15 +5,51 @@
 //  Created by bill on 4/6/14.
 //  Copyright (c) 2014 buildAll. All rights reserved.
 //
-
+/*
 #ifndef mmiinc_h
 #define mmiinc_h
 
 #endif
+*/
+//#include <stdbool.h>
 
-#include <stdbool.h>
+#include "bool.h"
 
-#define MAXMENUITEM 1
+
+
+#define MAXMENUITEM '5'
+
+#ifdef _WIN64
+  // const char* os = "Windoze64";
+   #define CLEAR "cls"
+#elif _WIN32
+   //const char* os = "Windoze32";
+   #define CLEAR "cls"
+#elif __APPLE__
+    #include "TargetConditionals.h"
+    #if TARGET_IPHONE_SIMULATOR
+         // iOS Simulator
+    #elif TARGET_OS_IPHONE
+        // iOS device
+    #elif TARGET_OS_MAC
+     //   const char* os = "MACOS";
+      #define CLEAR "clear"
+    #else
+        // Unsupported platform
+    #endif
+#elif __linux
+    // linux
+#elif __unix // all unices not caught above
+    // Unix
+#elif __posix
+    // POSIX
+#endif
+
+#define MMITODAY "today"
+#define MMIMONTH "this month"
+#define MMIYEAR "this year"
+#define MMIHISTORY "totally"
+
 
 /*
 typedef enum boolen
@@ -23,6 +59,7 @@ typedef enum boolen
 }bool;
 
 */
+
 
 float mmiNewConsume;
 

@@ -20,9 +20,12 @@
 
 #include "mmiinc.h"
 
+extern float totalToday;
+extern float totalMonth;
+extern float totalYear;
+extern float totalHistory;
 
-
-
+extern void displayExpense(char* period,float consume);
 int mmiGetAction()
 {
     int  actionID = -1;
@@ -38,14 +41,14 @@ int mmiGetAction()
         {
             case quit:
             case newExpense:
-          //  case checkToday:
-           // case checkMonth:
-           // case checkYear:
-           // case checkHistory:
+            case checkToday:
+            case checkMonth:
+            case checkYear:
+            case checkHistory:
                 
                 while ((ch = getchar())!='\n')
                 {
-                    if ((ch == '.')||(!(ch>='0'&&ch<='MAXMENUITEM')))
+                    if ((ch == '.')||(!(ch>='0'&&ch<=MAXMENUITEM)))
                     {
                         printf("Please only enter the number be listed\n");
                         printf("Please enter the number to choose your action:\n");
@@ -61,7 +64,7 @@ int mmiGetAction()
                 }
                 
                 //printf("Please wait a moment, I am trying my best to do the action\n");
-                system("clear");
+                system(CLEAR);
                 return actionID;
                 
                 
@@ -92,26 +95,34 @@ void mmiHandleAction(int actionID)
             printf("It is my pleasure to provide service to you, hope to see you soon! Bye!\n");
             break;
         case newExpense:
-            printf("I am going to record the new expense, pls wait...\n");
+            printf("I am ready to record the new expense, \n");
             mmiNewConsume = mmiGetNewExpense();
             break;
         case checkToday:
             printf("Your expense of today as follow:\n");
+            displayExpense(MMITODAY,totalToday);
             break;
         case checkMonth:
             printf("Your expense of this month as follow:\n");
+            displayExpense(MMIMONTH,totalMonth);
             break;
         case checkYear:
             printf("Your expense of this year as follow:\n");
+            displayExpense(MMIYEAR,totalYear);
             break;
         case checkHistory:
             printf("Total expense I can remember as follow:\n");
+            displayExpense(MMIHISTORY,totalHistory);
             break;
             
         default:
             printf("system error!");
             //getAction();
             break;
+            //displayExpense(TODAY,totalToday);
+   // displayExpense(MONTH,totalMonth);
+    //displayExpense(YEAR,totalYear);
+    //displayExpense(HISTORY,totalHistory);
     }
     //getchar();
     return;
@@ -386,7 +397,7 @@ int getAction()
                 }
                 
                 printf(" Please wait a moment, I am trying my best to do the action\n");
-                system("clear");
+                system(CLEAR);
                 return actionID;
                 //break;
                 

@@ -8,9 +8,9 @@
 //  History:
 //  2014-04-15: Add new marco WELCOME to the welcome screen.
 
-#ifndef accounting_displayinc_h
-#define accounting_displayinc_h
-#endif
+//#ifndef accounting_displayinc_h
+//#define accounting_displayinc_h
+//#endif
 
 
 

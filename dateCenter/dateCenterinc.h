@@ -1,10 +1,12 @@
 
 #include <time.h>
-#include <stdbool.h>
+//#include <stdbool.h>
+#include "bool.h"
 
 #define STOREDAY         0
 #define	STOREMONTH       1 
 #define STOREYEAR       2
+
 
 
 int todayDay;

@@ -30,7 +30,8 @@ void displayWelcome()
   timeinfo = localtime ( &rawtime );
 
   strftime (buffer,80,"Now it's 20%y/%m/%d.",timeinfo);
-  printf(WELCOME"\n");
+  printf(WELCOME);
+  printf("\n");
   puts (buffer);
   
   return;
@@ -61,6 +62,10 @@ void displayMenu()
      printf(userName);
      printf("?\n");
      printf("1. NEW expense\n");
+     printf("2. Check expense of Today\n");
+     printf("3. Check expense of This Month\n");
+     printf("4. Check expense of This Year\n");
+     printf("5. Check expense of History\n");
      printf("0. Quit\n");
         
 #if(0)
