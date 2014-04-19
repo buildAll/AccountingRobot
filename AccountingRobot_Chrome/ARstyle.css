@@ -22,10 +22,7 @@ p{
 	text-align: center;
 }
 
-a{
-	background-image: url(/Users/bill/Documents/Program/WebDevTest/pic.jpg);
-	background-color: yellow;
-}
+
 
 .titleformat
 {
@@ -52,6 +49,16 @@ a{
 {
 	font-color:red;
 	text-align: center;
+}
+
+#display
+{
+	font-color:white;
+}
+
+#userInterface
+{
+	font-color:white;
 }
 
 input
