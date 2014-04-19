@@ -1,0 +1,65 @@
+
+body{
+	background-color: #333333;
+	color:none;
+	font-size: 20px;
+	font-family:Arial; 
+
+}
+
+#go 
+{
+	background-color: #333333;
+	color:none;
+	font-size: 20px;
+	font-family:Arial; 
+
+}
+p{
+	background-color: #333333;
+	color:white;
+	font-size: 20px;
+	text-align: center;
+}
+
+a{
+	background-image: url(/Users/bill/Documents/Program/WebDevTest/pic.jpg);
+	background-color: yellow;
+}
+
+.titleformat
+{
+	text-align:center;
+	font-size: 24px;
+	font-color: white;
+
+}
+
+.menuformat
+{
+	text-align: center;
+	font-size: 35px;
+	font-color: white;
+}
+
+.format
+{
+	text-align: center;
+	font-color: white;
+}
+
+#testId
+{
+	font-color:red;
+	text-align: center;
+}
+
+input
+{
+	font-color:white;
+}
+
+button
+{
+	font-size: 20px;
+}
