@@ -1,0 +1,7 @@
+1. Implement a feature that can list the history of number user inputed. 
+
+2. Check and handle if the input is number.
+
+3. Make it can identify the date and display the consume of each day.
+
+4. Directly display this month consume after open the APP.
