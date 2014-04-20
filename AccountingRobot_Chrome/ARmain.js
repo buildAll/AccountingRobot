@@ -2,9 +2,6 @@ var out;
 
 var expense;
 
-//var total = {};
-
-var testflag = 0;
 
 
 
@@ -28,14 +25,18 @@ function displayNewExpense(button)
 function displayCheckExpens(button)
 {
 	button.addEventListener('click', function() {
-   // tracker.sendEvent('Flavor', 'Choose', button.id);
     out.textContent = 'You have spent :';
-    //out.innerHTML = 'ok';
     document.getElementById('box').hidden = true;
     document.getElementById('number').hidden = false;
     document.getElementById('record').hidden = true;
-    //expense = localStorage.getItem("consume");
-    document.getElementById('number').innerHTML = expense;
+     chrome.storage.local.get("total",function(val){
+          
+          if (typeof(val.total) == 'undefined') {
+            val.total = 0;
+          };
+          document.getElementById('number').innerHTML = val.total;
+      });
+    
     });
 }
 
@@ -47,99 +48,50 @@ function startApp()
     var newExpense = document.getElementById('userInterface'); 
     var newInput = document.getElementById('box'); 
     
-    document.getElementById("testDB").innerHTML = 'start test';
-    
-    //expense = localStorage.getItem("consume");
-   // expense = chrome.storage.local.get("consume");
-  /* if (testflag == 0 ) {
-   	chrome.storage.local.set({"total":"parseFloat(expense)"},function(){
-   		testflag = 1;
 
+   chrome.storage.local.get("total",function(val){
+          if (typeof(val.total) == 'undefined') {
+            val.total = 0;
+          };
+          expense = val.total;
+      });
 
-   	});
-   };
-   
-   chrome.storage.local.set({total:parseFloat(expense)},function(){
-   		testflag = 1;
-
-
-   	});
-   
-
-    chrome.storage.local.get(total,function(val){
-          document.getElementById("testDB").innerHTML = val.total;
-     	});
-
-*/
-   document.getElementById("testDB").innerHTML = expense;
-
-
-    //if (expense == "NaN") {expense = 0;};
     
     document.getElementById('box').hidden = true;
-   // out = document.getElementById('replace');
    out = document.getElementById('displayMessage');
     
-   // newExpense.onsubmit = dbUpdate();
    newExpense.onsubmit = function(){
     var number = newInput.value;
-     
+    //document.getElementById("testInput").innerHTML = number;
 
-      //chrome.storage.local.set({"total":number},function(){;});
-      chrome.storage.local.get("total",function(val){
-          document.getElementById("testDB").innerHTML = val.total;
-     	});
-     // chrome.storage.local.set({"total":expense},function(){;});
-/*
-     chrome.storage.local.get("total",function(val){
-          expense = val;
-          if (expense == "NaN") {expense = 0}; 
-     	});
-*/
-   // chrome.storage.local.get({"consume":expense},function());
-/*
-    chrome.storage.local.get("consume",function(){
-           if (consume == null) {expense = 0;}
-           else{
-           	expense = consume;
-           }
-           if (expense == "NaN") {expense = 0;};
-              
-     	});
- */
-    //expense = localStorage.getItem("consume");
-   // expense = chrome.storage.local.get("consume");
 
       chrome.storage.local.get("total",function(val){
+          
+          if (typeof(val.total) == 'undefined') {
+            val.total = 0;
+          };
           expense = val.total;
-          if (expense == "NaN") {expense = 0}; 
      	});
 
-    if (expense == "NaN") {expense = 0;};
+     // document.getElementById("testDB").innerHTML = expense;
 
-    //document.getElementById("testDB").innerHTML = expense;
 
    	expense = parseFloat(expense) + parseFloat(number);
-     
-     //expense = parseFloat(expense);  
+    
+  //  document.getElementById("testSum").innerHTML = expense; 
 
      (expense).toString();
 
-    //chrome.storage.local.set("consume",expense);
      chrome.storage.local.set({"total":expense},function(){;});
 
     
-     //localStorage.setItem("consume", expense); 
-   	//number.replac(/ /g,'');
-    
-    // Check to make sure the text is not blank (or just spaces).
+
     
      newInput.value = '';
      document.getElementById('record').hidden = false;
      document.getElementById('record').innerHTML = 'Expense Recorded!'
      //return false;       
    };    
-    //button1 = testReplace;
     displayNewExpense(button1);
     displayCheckExpens(button2);
 }
