@@ -29,6 +29,8 @@ function displayCheckExpens(button)
             val.total = 0;
           };
           document.getElementById('number').innerHTML = val.total;
+
+          // chrome.storage.sync.set({"total":val.total},function(){;});
       });
     
     });
@@ -41,7 +43,8 @@ function startApp()
     var button2 = document.getElementById('check');
     var newExpense = document.getElementById('userInterface'); 
     var newInput = document.getElementById('box'); 
-    
+   
+//initial expense
 
    chrome.storage.sync.get("total",function(val){
           if (typeof(val.total) == 'undefined') {
@@ -56,9 +59,9 @@ function startApp()
     
    newExpense.onsubmit = function(){
     var number = newInput.value;
-    //document.getElementById("testInput").innerHTML = number;
+  //  document.getElementById("testInput").innerHTML = number;
 
-
+/*
       chrome.storage.sync.get("total",function(val){
           
           if (typeof(val.total) == 'undefined') {
@@ -66,26 +69,24 @@ function startApp()
           };
           expense = val.total;
      	});
-
-     // document.getElementById("testDB").innerHTML = expense;
+*/
+ //     document.getElementById("testDB").innerHTML = expense;
 
 
    	expense = parseFloat(expense) + parseFloat(number);
     
-  //  document.getElementById("testSum").innerHTML = expense; 
+ //   document.getElementById("testSum").innerHTML = expense; 
 
      (expense).toString();
 
      chrome.storage.sync.set({"total":expense},function(){;});
-
-    
-
-    
+ 
      newInput.value = '';
      document.getElementById('record').hidden = false;
      document.getElementById('record').innerHTML = 'Expense Recorded!'
-     //return false;       
-   };    
+     return false;       
+   };  
+    
     displayNewExpense(button1);
     displayCheckExpens(button2);
 }
