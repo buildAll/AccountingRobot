@@ -2,6 +2,10 @@ var out;
 
 var expense;
 
+//var total = {};
+
+var testflag = 0;
+
 
 
 
@@ -42,10 +46,35 @@ function startApp()
     var button2 = document.getElementById('check');
     var newExpense = document.getElementById('userInterface'); 
     var newInput = document.getElementById('box'); 
-
-    expense = localStorage.getItem("consume");
     
-    if (expense == "NaN") {expense = 0;};
+    document.getElementById("testDB").innerHTML = 'start test';
+    
+    //expense = localStorage.getItem("consume");
+   // expense = chrome.storage.local.get("consume");
+  /* if (testflag == 0 ) {
+   	chrome.storage.local.set({"total":"parseFloat(expense)"},function(){
+   		testflag = 1;
+
+
+   	});
+   };
+   
+   chrome.storage.local.set({total:parseFloat(expense)},function(){
+   		testflag = 1;
+
+
+   	});
+   
+
+    chrome.storage.local.get(total,function(val){
+          document.getElementById("testDB").innerHTML = val.total;
+     	});
+
+*/
+   document.getElementById("testDB").innerHTML = expense;
+
+
+    //if (expense == "NaN") {expense = 0;};
     
     document.getElementById('box').hidden = true;
    // out = document.getElementById('replace');
@@ -54,20 +83,53 @@ function startApp()
    // newExpense.onsubmit = dbUpdate();
    newExpense.onsubmit = function(){
     var number = newInput.value;
+     
 
+      //chrome.storage.local.set({"total":number},function(){;});
+      chrome.storage.local.get("total",function(val){
+          document.getElementById("testDB").innerHTML = val.total;
+     	});
+     // chrome.storage.local.set({"total":expense},function(){;});
+/*
+     chrome.storage.local.get("total",function(val){
+          expense = val;
+          if (expense == "NaN") {expense = 0}; 
+     	});
+*/
+   // chrome.storage.local.get({"consume":expense},function());
+/*
+    chrome.storage.local.get("consume",function(){
+           if (consume == null) {expense = 0;}
+           else{
+           	expense = consume;
+           }
+           if (expense == "NaN") {expense = 0;};
+              
+     	});
+ */
+    //expense = localStorage.getItem("consume");
+   // expense = chrome.storage.local.get("consume");
 
-      
-    expense = localStorage.getItem("consume");
-    
+      chrome.storage.local.get("total",function(val){
+          expense = val.total;
+          if (expense == "NaN") {expense = 0}; 
+     	});
+
     if (expense == "NaN") {expense = 0;};
 
     //document.getElementById("testDB").innerHTML = expense;
 
    	expense = parseFloat(expense) + parseFloat(number);
      
-     //expense = parseFloat(expense);   
+     //expense = parseFloat(expense);  
 
-     localStorage.setItem("consume", expense); 
+     (expense).toString();
+
+    //chrome.storage.local.set("consume",expense);
+     chrome.storage.local.set({"total":expense},function(){;});
+
+    
+     //localStorage.setItem("consume", expense); 
    	//number.replac(/ /g,'');
     
     // Check to make sure the text is not blank (or just spaces).
