@@ -1,11 +1,5 @@
 var out;
-
 var expense;
-
-
-
-
-
 
 function displayNewExpense(button)
 {
@@ -29,7 +23,7 @@ function displayCheckExpens(button)
     document.getElementById('box').hidden = true;
     document.getElementById('number').hidden = false;
     document.getElementById('record').hidden = true;
-     chrome.storage.local.get("total",function(val){
+     chrome.storage.sync.get("total",function(val){
           
           if (typeof(val.total) == 'undefined') {
             val.total = 0;
@@ -49,7 +43,7 @@ function startApp()
     var newInput = document.getElementById('box'); 
     
 
-   chrome.storage.local.get("total",function(val){
+   chrome.storage.sync.get("total",function(val){
           if (typeof(val.total) == 'undefined') {
             val.total = 0;
           };
@@ -65,7 +59,7 @@ function startApp()
     //document.getElementById("testInput").innerHTML = number;
 
 
-      chrome.storage.local.get("total",function(val){
+      chrome.storage.sync.get("total",function(val){
           
           if (typeof(val.total) == 'undefined') {
             val.total = 0;
@@ -82,7 +76,7 @@ function startApp()
 
      (expense).toString();
 
-     chrome.storage.local.set({"total":expense},function(){;});
+     chrome.storage.sync.set({"total":expense},function(){;});
 
     
 
