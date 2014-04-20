@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Accounting Robot",
   "description": "A accounting application that help you manage your money",
-  "version": "0.1",
+  "version": "0.2",
   "app": {
     "background": {
 

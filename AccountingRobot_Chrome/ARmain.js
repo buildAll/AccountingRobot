@@ -8,9 +8,16 @@ function displayNewExpense(button)
 	 button.addEventListener('click', function() {
    // tracker.sendEvent('Flavor', 'Choose', button.id);
     out.textContent = 'How much money did you spend?';
+     chrome.storage.sync.get("total",function(val){
+          if (typeof(val.total) == 'undefined') {
+            val.total = 0;
+          };
+          expense = val.total;
+      });
     //out.innerHTML = 'ok';
     document.getElementById('box').hidden = false;
     document.getElementById('number').hidden = true;
+    document.getElementById('record').hidden = true;
     });
 
 
@@ -45,14 +52,14 @@ function startApp()
     var newInput = document.getElementById('box'); 
    
 //initial expense
-
+/*
    chrome.storage.sync.get("total",function(val){
           if (typeof(val.total) == 'undefined') {
             val.total = 0;
           };
           expense = val.total;
       });
-
+*/
     
     document.getElementById('box').hidden = true;
    out = document.getElementById('displayMessage');
